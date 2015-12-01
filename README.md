@@ -1,1 +1,1 @@
-BI platfomr in the clound
+BI and Data collection platform as a service
