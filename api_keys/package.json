@@ -1,0 +1,17 @@
+{
+  "name": "api_keys",
+  "version": "1.0.0",
+  "description": "API Key validation service",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.49"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Dimitar Bonev <dimitar.bonev@gmail.com> (http://anothermobiledeveloper.blogspot.bg/)",
+  "license": "ISC"
+}

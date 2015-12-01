@@ -1,0 +1,7 @@
+{
+	"port" : "4242",
+	"api_validation_service" : "http://apikeys:4343/validate_api_key",
+	"mongo_instance_host" : "mongo",
+	"mongo_instance_port" : "27017",
+	"mongo_instance_db" : "maindb"
+}
