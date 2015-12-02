@@ -28,7 +28,7 @@ read_config(config_filename, function(config){
 		resp.redirect('/api');
 	});
 	app.get('/api', function(req, resp){
-		resp.send('Use post request to this endpoint to log your events');
+		send(resp, 'Use post request to this endpoint to log your events');  
 	});
 
 	var test_processor = new Processor(true);
@@ -42,23 +42,22 @@ read_config(config_filename, function(config){
 			function(req, resp){
 				validate_api_key(config, req, function(err, api_key){
 					if (err){
-						resp.send('Invalid or missing API key');
+						send(resp, 'Invalid or missing API key');
 						return;
 					}
 					console.log(api_key);
 					var owner = api_key.owner;
 					write_to_db(req.body, is_test, owner, function(err, msg){
 						if (err){
-							resp.send('There was an error processing your request\n');
+							send(resp, 'There was an error processing your request\n');
 						} else {
-							resp.send('Your request has been processed.\n');
+							send(resp, 'Your request has been processed.\n');
 						}
 					});
 				});
 			};
 		return this;
 	}
-
 
 	var port = config.port == null ? 4242 : config.port;
 	app.listen(config.port, function(){
@@ -124,4 +123,13 @@ function read_config(filename, callback){
 			callback(config);
 		}
 	});
+}
+
+function send(resp, message){
+	try {
+		resp.send(message);
+	}
+	catch (e){
+		console.log('Swallowing exception ' + e);
+	}
 }
