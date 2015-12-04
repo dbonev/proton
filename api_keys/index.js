@@ -4,6 +4,7 @@ var mongo_client = mongodb.MongoClient;
 var express = require('express');
 var app = express();
 var body_parser = require('body-parser');
+
 var linqnode = require('linqnode');
 
 app.use(body_parser.json());
@@ -64,7 +65,6 @@ read_config(config_filename, function(config){
 					}
 					db.close();
 				});
-
 			}
 		});
 	});
