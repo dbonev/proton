@@ -40,6 +40,7 @@ read_config(config_filename, function(config){
 	function Processor(is_test){
 		this.process_function = 
 			function(req, resp){
+				console.log('Received request ' + req.body);
 				validate_api_key(config, req, function(err, api_key){
 					if (err){
 						send(resp, 'Invalid or missing API key');
