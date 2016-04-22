@@ -1,10 +1,28 @@
-apikeys:
-  build: ./api_keys
-  container_name: "apikeys"
-  ports:
-    - "4343:4343"
-data_api:
-  build: ./data_collection
-  container_name: "data_api"
-  ports:
-    - "4242:4242"
+version: "2"
+networks:
+    front:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.0.1/16
+                  subler: 10.0.0.1/16
+                
+services:
+    apikeys:
+      build: ./api_keys
+      container_name: "apikeys"
+      networks:
+        - "front"
+      ports:
+        - "4343:4343"
+        - "4344:4344"
+    data_api:
+      build: ./data_collection
+      container_name: "data_api"
+      networks:
+        - "front"
+      volumes:
+        - "/tmp/"
+      ports:
+        - "4242:4242"

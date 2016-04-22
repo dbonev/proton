@@ -1,0 +1,10 @@
+apikeys:
+  build: ./api_keys
+  container_name: "apikeys"
+  ports:
+    - "4343:4343"
+data_api:
+  build: ./data_collection
+  container_name: "data_api"
+  ports:
+    - "4242:4242"
