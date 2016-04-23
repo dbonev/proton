@@ -1,6 +1,6 @@
 {
 	"port" : "4343",
-	"mongo_instance_host" : "localhost",
+	"mongo_instance_host" : "mongo",
 	"mongo_instance_port" : "27017",
 	"mongo_instance_db" : "maindb"
 }

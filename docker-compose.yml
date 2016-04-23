@@ -1,19 +1,14 @@
 version: "2"
+
 networks:
-    front:
-        driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 10.0.0.1/16
-                  subler: 10.0.0.1/16
+    proton:
                 
 services:
     apikeys:
       build: ./api_keys
-      container_name: "apikeys"
       networks:
-        - "front"
+        - proton
+      container_name: "apikeys"
       ports:
         - "4343:4343"
         - "4344:4344"
@@ -21,7 +16,7 @@ services:
       build: ./data_collection
       container_name: "data_api"
       networks:
-        - "front"
+        - proton
       volumes:
         - "/tmp/"
       ports:
